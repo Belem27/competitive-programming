@@ -4,10 +4,12 @@ class Solution(object):
         :type operations: List[str]
         :rtype: int
         """
-        x = 0
+        X = 0
+
         for operation in operations:
-            if operation == "++X" or operation == "X++":
-                x += 1
-            if operation == "--X" or operation == "X--":
-                x -= 1
-        return x
+            if "++" in operation:
+                X += 1
+            else:
+                X -= 1
+
+        return X
