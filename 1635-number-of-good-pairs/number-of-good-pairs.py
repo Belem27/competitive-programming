@@ -4,13 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        num_of_good_pair = 0
-        num_count = {}
-        for num in nums:
-            if num in num_count:
-                num_of_good_pair += num_count[num]
-                num_count[num] += 1
-            else:
-                num_count[num] = 1
+        count = 0
 
-        return num_of_good_pair
+        for i in range(len(nums) - 1):
+            for j in range(i + 1, len(nums)):
+                if nums[i] == nums[j]:
+                    count += 1
+        
+        return count
+        
