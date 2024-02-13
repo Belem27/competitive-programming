@@ -10,6 +10,6 @@ class Solution(object):
             lost[m[0]] += 0
             lost[m[1]] += 1
         
-        zero = sorted([k for k, l in lost.items() if l == 0])
-        ones = sorted([k for k, l in lost.items() if l == 1])
-        return [zero, ones]
+        no_losses = sorted([k for k, l in lost.items() if l == 0])
+        one_loss = sorted([k for k, l in lost.items() if l == 1])
+        return [no_losses, one_loss]
