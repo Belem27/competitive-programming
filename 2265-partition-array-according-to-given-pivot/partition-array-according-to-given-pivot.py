@@ -8,7 +8,6 @@ class Solution(object):
         less = []
         more = []
         pivot_arr = []
-        result = []
 
         for num in nums:
             if num < pivot:
@@ -17,12 +16,5 @@ class Solution(object):
                 more.append(num)
             else:
                 pivot_arr.append(num)
-
-        for num in less:
-            result.append(num)
-        for num in pivot_arr:
-            result.append(num)
-        for num in more:
-            result.append(num)
         
-        return result
+        return less + pivot_arr + more
