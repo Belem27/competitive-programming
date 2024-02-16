@@ -1,7 +1,8 @@
 class RandomizedSet(object):
 
     def __init__(self):
-        self.hashmap = set()
+        self.hashmap = {}  # Dictionary to store values and their indices in the array
+        self.array = []    # List to store values
 
     def insert(self, val):
         """
@@ -10,7 +11,8 @@ class RandomizedSet(object):
         """
         if val in self.hashmap:
             return False
-        self.hashmap.add(val)
+        self.array.append(val)
+        self.hashmap[val] = len(self.array) - 1
         return True
 
     def remove(self, val):
@@ -20,14 +22,19 @@ class RandomizedSet(object):
         """
         if val not in self.hashmap:
             return False
-        self.hashmap.remove(val)
+        index = self.hashmap[val]
+        last_val = self.array[-1]
+        self.array[index] = last_val
+        self.hashmap[last_val] = index
+        self.array.pop()
+        del self.hashmap[val]
         return True
 
     def getRandom(self):
         """
         :rtype: int
         """
-        return random.choice(list(self.hashmap))
+        return random.choice(self.array)
 
 
 # Your RandomizedSet object will be instantiated and called as such:
