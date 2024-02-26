@@ -4,5 +4,5 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        s = [c.lower() for c in s if c.isalnum()]
+        s = [c for c in s.lower() if c.isalnum()]
         return (s == s[::-1])
