@@ -4,10 +4,13 @@ class Solution(object):
         :type mat: List[List[int]]
         :rtype: List[int]
         """
-        d = defaultdict(list)
+        d = {}
         for i in range(len(mat)):
             for j in range(len(mat[0])):
-                d[i+j].append(mat[i][j])
+                if i + j not in d:
+                    d[i+j] = [mat[i][j]]
+                else:
+                    d[i+j].append(mat[i][j])
         
         ans = []
         for entry in d.items():
