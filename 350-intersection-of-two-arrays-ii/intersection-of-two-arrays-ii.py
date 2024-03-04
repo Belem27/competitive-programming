@@ -5,12 +5,5 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-        hashmap = Counter(nums1)
-        result = []
-
-        for num in nums2:
-            if num in hashmap and hashmap[num] > 0:
-                result.append(num)
-                hashmap[num] -= 1
-        
-        return result
+       
+        return list((Counter(nums1) & Counter(nums2)).elements())
