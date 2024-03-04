@@ -5,8 +5,10 @@ class Solution(object):
         :rtype: int
         """
         points.sort()
-        result = 0
+        sol = 0
+        ans = 0
         for i in range(1, len(points)):
-            result = max(result, (points[i][0] - points[i-1][0]))
-
-        return result
+            sol = points[i][0] - points[i-1][0]
+            if ans < sol:
+                ans = sol
+        return ans
