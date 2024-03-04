@@ -5,11 +5,8 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: List[int]
         """
-        hashmap = {}
+        hashmap = Counter(nums1)
         result = []
-
-        for num in nums1:
-            hashmap[num] = hashmap.get(num, 0) + 1
 
         for num in nums2:
             if num in hashmap and hashmap[num] > 0:
