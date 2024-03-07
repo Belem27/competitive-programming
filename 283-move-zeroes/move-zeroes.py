@@ -4,9 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        arr = []
-        while 0 in nums:
-            nums.remove(0)
-            arr.append(0)
-
-        nums.extend(arr)
+        left = 0
+        
+        for right in range(len(nums)):
+            if nums[right] != 0:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
