@@ -5,7 +5,10 @@ class Solution(object):
         :type heights: List[int]
         :rtype: List[str]
         """
-        heights, names = zip(*sorted(zip(heights, names), reverse=True))
+        d = {heights[i] : names[i] for i in range(len(names))}
+        heights.sort(reverse=True)
+        for i in range(len(heights)):
+            names[i] = d[heights[i]]
         return names
         
     def bubbleSort(self, heights):
