@@ -4,20 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        zeros, ones, twos = [], [], []
+        hashmap = {}
 
-        for i in range(len(nums)):
-            if nums[i] == 0:
-                zeros.append(0)
-            
-            if nums[i] == 1:
-                ones.append(1)
+        for num in nums:
+            hashmap[num] = hashmap.get(num, 0) + 1
 
-            if nums[i] == 2:
-                twos.append(2)
-
-        nums[:] = []
-
-        nums.extend(zeros)
-        nums.extend(ones)
-        nums.extend(twos)
+        target = 0
+        for idx, val in hashmap.items():
+            for i in range(val):
+                nums[target] = idx
+                target += 1
