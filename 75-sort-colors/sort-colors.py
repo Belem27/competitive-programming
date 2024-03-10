@@ -16,7 +16,7 @@ class Solution(object):
             if nums[i] == 2:
                 twos.append(2)
 
-        nums*=0
+        nums[:] = []
 
         nums.extend(zeros)
         nums.extend(ones)
