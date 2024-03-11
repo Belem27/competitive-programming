@@ -5,6 +5,7 @@ class Solution(object):
         :rtype: int
         """
         seen = set()
-
-        return next(num for num in nums if num in seen or seen.add(num))
+        for num in nums:
+            if num in seen or seen.add(num):
+                return num 
         
