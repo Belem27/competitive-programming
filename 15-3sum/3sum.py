@@ -4,23 +4,34 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res = []
         nums.sort()
-        for i in xrange(len(nums)-2):
-            if i > 0 and nums[i] == nums[i-1]:
+        answer = []
+        
+        if len(nums) < 3:
+            return answer
+        
+        for i in range(len(nums)):
+            if nums[i] > 0:
+                break
+            
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            l, r = i+1, len(nums)-1
-            while l < r:
-                s = nums[i] + nums[l] + nums[r]
-                if s < 0:
-                    l +=1 
-                elif s > 0:
-                    r -= 1
+            
+            low, high = i + 1, len(nums) - 1
+            while low < high:
+                s = nums[i] + nums[low] + nums[high]
+                if s > 0:
+                    high -= 1
+                elif s < 0:
+                    low += 1
                 else:
-                    res.append((nums[i], nums[l], nums[r]))
-                    while l < r and nums[l] == nums[l+1]:
-                        l += 1
-                    while l < r and nums[r] == nums[r-1]:
-                        r -= 1
-                    l += 1; r -= 1
-        return res
+                    answer.append([nums[i], nums[low], nums[high]])
+                    lastLowOccurrence, lastHighOccurrence = nums[low], nums[high]
+                    
+                    while low < high and nums[low] == lastLowOccurrence:
+                        low += 1
+                    
+                    while low < high and nums[high] == lastHighOccurrence:
+                        high -= 1
+        
+        return answer
