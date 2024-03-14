@@ -11,12 +11,14 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        l, r, check = 1, n, 1
+        l, r = 1, n
 
-        while check != 0:
+        while l <= r:
             mid =  (l + r) // 2
             check = guess(mid)
-            if check == 1:
+            if check == 0:
+                return mid
+            elif check == 1:
                 l = mid + 1
             else:
                 r = mid - 1
