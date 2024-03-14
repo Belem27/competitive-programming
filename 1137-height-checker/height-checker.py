@@ -4,4 +4,10 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        return sum(height != expected for height, expected in zip(heights, sorted(heights)))
+        count = 0
+
+        for i in range(len(heights)):
+            if heights[i] != sorted(heights)[i]:
+                count += 1
+
+        return count
