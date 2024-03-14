@@ -5,8 +5,7 @@ class Solution(object):
         :type b: str
         :rtype: bool
         """
-        def is_palindrome(s):
-            return s == s[::-1]
+        is_palindrome = lambda s: s == s[::-1]
 
         def check_condition(a, b):
             l, r = 0, len(a) - 1
