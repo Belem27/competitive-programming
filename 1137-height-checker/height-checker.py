@@ -4,12 +4,4 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        count = 0
-        expected = heights[:]
-        expected.sort()
-
-        for i in range(len(heights)):
-            if heights[i] != expected[i]:
-                count += 1
-
-        return count
+        return sum(height != expected for height, expected in zip(heights, sorted(heights)))
