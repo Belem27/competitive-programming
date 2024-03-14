@@ -14,13 +14,11 @@ class Solution(object):
         l, r = 1, n
 
         while l <= r:
-            mid =  (l + r) // 2
-            check = guess(mid)
-            if check == 0:
-                return mid
-            elif check == 1:
-                l = mid + 1
+            if guess((l + r) // 2) == 0:
+                return (l + r) // 2
+            elif guess((l + r) // 2) == 1:
+                l = ((l + r) // 2) + 1
             else:
-                r = mid - 1
+                r = ((l + r) // 2) - 1
 
-        return mid 
+        return ((l + r) // 2) 
