@@ -4,9 +4,12 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
-        row_maxes = [max(row) for row in grid]
-        col_maxes = [max(col) for col in itertools.izip(*grid)]
+        sum_ = 0
+        cols = [max(i) for i in zip(*grid)]
+        rows = [max(i) for i in grid]
 
-        return sum(min(row_maxes[r], col_maxes[c])-val \
-                   for r, row in enumerate(grid) \
-                   for c, val in enumerate(row))
+        for i in range(len(grid)):
+            for j in range(len(grid)):
+                sum_ += min(cols[j], rows[i]) - grid[i][j]
+
+        return sum_
