@@ -7,16 +7,11 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(nums)
-        max_i = min_i = 0
-        for i in xrange(n - indexDifference):
-            if nums[i] > nums[max_i]:
-                max_i = i
-            elif nums[i] < nums[min_i]:
-                min_i = i
-
-            if nums[max_i] - nums[i + indexDifference] >= valueDifference:
-                return [max_i, i + indexDifference]
-            if nums[i + indexDifference] - nums[min_i] >= valueDifference:
-                return [min_i, i + indexDifference]
-
+        mini = maxi = 0
+        for i in range(indexDifference, n):
+            if nums[i - indexDifference] < nums[mini]: mini = i - indexDifference
+            if nums[i - indexDifference] > nums[maxi]: maxi = i - indexDifference
+            if nums[i] - nums[mini] >= valueDifference: return [mini, i]
+            if nums[maxi] - nums[i] >= valueDifference: return [maxi, i]
+            
         return [-1, -1]
