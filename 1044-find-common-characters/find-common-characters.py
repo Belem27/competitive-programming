@@ -7,9 +7,7 @@ class Solution(object):
         common_char_count = Counter(words[0])
 
         for word in words[1:]:
-            word_count = Counter(word)
-
-            common_char_count &= word_count
+            common_char_count &= Counter(word)
 
         res = []
 
