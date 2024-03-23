@@ -14,7 +14,7 @@ class Solution(object):
             elif num < 0:
                 negative_arr.append(num)
         
-        for i in range(len(zip(positive_arr, negative_arr))):
+        for i in range(len(nums)//2):
             result.append(positive_arr[i])
             result.append(negative_arr[i])
         
