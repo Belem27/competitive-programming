@@ -4,18 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        positive_arr = []
-        negative_arr = []
-        result = []
-
-        for num in nums:
-            if num > 0:
-                positive_arr.append(num)
-            elif num < 0:
-                negative_arr.append(num)
-        
-        for i in range(len(nums)//2):
-            result.append(positive_arr[i])
-            result.append(negative_arr[i])
+        positive_arr = [num for num in nums if num > 0]
+        negative_arr = [num for num in nums if num < 0]
+        result = [val for pair in zip(positive_arr[:len(nums)//2], negative_arr[:len(nums)//2]) for val in pair]
         
         return result
