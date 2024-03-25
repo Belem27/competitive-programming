@@ -4,7 +4,5 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        odds = 0
-        for k, v in Counter(s).iteritems():
-            odds += v & 1
-        return len(s) - odds + int(odds > 0)
+        odd = sum(map(lambda x: x & 1, collections.Counter(s).values()))
+        return len(s) - odd + int(odd > 0)
