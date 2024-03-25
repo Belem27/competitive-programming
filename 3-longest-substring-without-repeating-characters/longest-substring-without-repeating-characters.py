@@ -10,11 +10,12 @@ class Solution(object):
         stack = set()
 
         while i < len(s):
-            while s[i] in stack:
+            if s[i] in stack:
                 stack.remove(s[j])
                 j += 1
-            stack.add(s[i])
-            max_substr = max(max_substr, abs(i - j + 1))
-            i += 1
+            else:
+                stack.add(s[i])
+                max_substr = max(max_substr, abs(i - j + 1))
+                i += 1
 
         return max_substr
