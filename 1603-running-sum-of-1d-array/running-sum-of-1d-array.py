@@ -4,9 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        a=[]
-        s=0
+        rs = [0] * len(nums)
         for i in range(len(nums)):
-            s+=nums[i]
-            a.append(s)
-        return a
+            rs[i] = sum(nums[:i + 1])
+
+        return rs
