@@ -9,7 +9,7 @@ class Solution(object):
             cp = ""
             for i in range(n):
                 if s1[i] != s2[i]:
-                    return cp
+                    break
                 cp += s1[i]
             
             return cp
