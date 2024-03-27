@@ -4,8 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        rs = [0] * len(nums)
-        for i in range(len(nums)):
-            rs[i] = sum(nums[:i + 1])
+        running_sum = [0] * len(nums)
+        current_sum = 0
 
-        return rs
+        for i in range(len(nums)):
+            current_sum += nums[i]
+            running_sum[i] = current_sum
+        
+        return running_sum
