@@ -6,13 +6,10 @@ class Solution:
         
         #return: True or False
         
-        a = sorted(A)
-        b = sorted(B)
-        
-        if a == b:
+        #code here
+        if sorted(A) == sorted(B):
             return True
-        else:
-            return False
+        return False
 
 #{ 
  # Driver Code Starts
