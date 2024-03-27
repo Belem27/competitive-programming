@@ -4,21 +4,24 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        def LCP(s1, s2):
+        def lcp(s1, s2):
             n = min(len(s1), len(s2))
-            common_prefix = ""
+            cp = ""
             for i in range(n):
                 if s1[i] != s2[i]:
-                    break
-                common_prefix += s1[i]
-            return common_prefix
-        if len(strs) < 1:
-            return ""
-        elif len(strs) == 1:
-            return strs[0]
+                    return cp
+                cp += s1[i]
+            
+            return cp
 
-        lcp = LCP(strs[0], strs[1])
+        if len(strs) == 1:
+            return strs[0]
+        elif len(strs) < 1:
+            return ""
+
+        cp = lcp(strs[0], strs[1])
         for i in range(2, len(strs)):
-            lcp = LCP(lcp, strs[i])
+            cp = lcp(cp, strs[i])
         
-        return lcp
+        return cp
+        
