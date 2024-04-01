@@ -4,6 +4,9 @@ class Solution(object):
         :type command: str
         :rtype: str
         """
-        res = command.replace("()", "o")
-
-        return "".join(list([val for val in res if val.isalpha()]))
+        res = command.replace("()", "o").encode("ascii", "ignore")
+        ans = ""
+        for c in res:
+            if ord(c) in range(45, 91) or ord(c) in range(97, 123):
+                ans += c
+        return ans
