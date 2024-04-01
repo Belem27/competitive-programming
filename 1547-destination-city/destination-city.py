@@ -4,9 +4,7 @@ class Solution(object):
         :type paths: List[List[str]]
         :rtype: str
         """
-        s = [paths[i][0] for i in range(len(paths))]
-        d = [paths[i][1] for i in range(len(paths))]
 
-        for city in d:
-            if city not in s:
+        for city in [paths[i][1] for i in range(len(paths))]:
+            if city not in [paths[i][0] for i in range(len(paths))]:
                 return city
