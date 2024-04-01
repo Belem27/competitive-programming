@@ -4,9 +4,9 @@ class Solution(object):
         :type command: str
         :rtype: str
         """
-        res = command.replace("()", "o").encode("ascii", "ignore")
+        command = command.replace("()", "o")
         ans = ""
-        for c in res:
+        for c in command:
             if ord(c) in range(45, 91) or ord(c) in range(97, 123):
                 ans += c
         return ans
