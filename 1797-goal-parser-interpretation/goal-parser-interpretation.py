@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: str
         """
         res = command.replace("()", "o")
-        res = res.replace("(", "")
-        res = res.replace(")", "")
-        
-        return res
+        res = list([val for val in res if val.isalpha()])
+
+        return "".join(res)
