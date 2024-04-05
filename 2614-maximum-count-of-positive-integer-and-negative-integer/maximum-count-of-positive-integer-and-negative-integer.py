@@ -4,6 +4,4 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        pos = [num for num in nums if num > 0]
-        neg = [num for num in nums if num < 0]
-        return max(len(pos), len(neg))
+        return max(len([num for num in nums if num > 0]), len([num for num in nums if num < 0]))
