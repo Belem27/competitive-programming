@@ -4,7 +4,7 @@ class Solution(object):
         :type num: str
         :rtype: str
         """
-        for i in range(len(num) - 1, -1, -1):
+        for i in reversed(xrange(len(num))):
             if int(num[i]) % 2 == 1:
                 return num[:i + 1] 
 
