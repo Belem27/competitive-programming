@@ -5,11 +5,18 @@ class Solution(object):
         :type sandwiches: List[int]
         :rtype: int
         """
-        count = Counter(students)
-        for i, s in enumerate(sandwiches):
-            if not count[s]:
+        count = 0
+
+        while students:
+            if students[0] == sandwiches[0]:
+                students.pop(0)
+                sandwiches.pop(0)
+                count = 0
+            else:
+                students.append(students.pop(0))
+                count += 1
+
+            if count == len(students):
                 break
-            count[s] -= 1
-        else:
-            i = len(sandwiches)
-        return len(sandwiches)-i
+            
+        return count
