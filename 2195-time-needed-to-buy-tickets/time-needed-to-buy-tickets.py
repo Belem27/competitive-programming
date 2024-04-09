@@ -5,12 +5,4 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        ans = 0
-
-        for i in range(len(tickets)):
-            if i <= k:
-                ans += min(tickets[i], tickets[k])
-            else:
-                ans += min(tickets[i], tickets[k] - 1)
-        
-        return ans
+        return sum(min(tickets[k] - (i > k), num) for i,num in enumerate(tickets))
