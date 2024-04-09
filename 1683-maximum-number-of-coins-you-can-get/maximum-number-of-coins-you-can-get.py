@@ -8,7 +8,7 @@ class Solution(object):
         ans = 0
 
         for _ in range((len(piles)//3)):
-            piles.pop(0)
+            piles.remove(piles[0])
             ans += piles.pop(0)
         
         return ans
