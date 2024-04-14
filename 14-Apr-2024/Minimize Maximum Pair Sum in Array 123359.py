@@ -1,0 +1,15 @@
+# Problem: Minimize Maximum Pair Sum in Array - https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/
+
+class Solution(object):
+    def minPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        max_sum = 0
+
+        for i in range(len(nums)//2):
+            max_sum = max(max_sum, (nums[i] + nums[~i]))
+        
+        return max_sum
