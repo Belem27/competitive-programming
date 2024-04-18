@@ -12,7 +12,7 @@ class Solution(object):
         """
         dummy = ListNode()
         current = dummy
-        
+
         while list1 and list2:
             if list1.val < list2.val:
                 current.next = list1
