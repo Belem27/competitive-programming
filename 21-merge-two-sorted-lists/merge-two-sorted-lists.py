@@ -10,21 +10,25 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        dummy = ListNode()
-        current = dummy
+        merged = ListNode()
+        curr = merged
 
         while list1 and list2:
             if list1.val < list2.val:
-                current.next = list1
-                list1 = list1.next
+                list1next = list1.next
+                list1.next = None
+                curr.next = list1
+                list1 = list1next
             else:
-                current.next = list2
-                list2 = list2.next
-            current = current.next
-        
+                list2next = list2.next
+                list2.next = None
+                curr.next = list2
+                list2 = list2next
+            curr = curr.next
+            
         if list1:
-            current.next = list1
+            curr.next = list1
         if list2:
-            current.next = list2
-        
-        return dummy.next
+            curr.next = list2
+
+        return merged.next
