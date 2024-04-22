@@ -10,7 +10,6 @@ class Solution(object):
             if operation == "../" and stack:
                 stack.pop()
             elif operation != "./" and operation != "../":
-                stack.append(operation)
+                stack.append(1)
         
-        print(stack)
         return len(stack)
