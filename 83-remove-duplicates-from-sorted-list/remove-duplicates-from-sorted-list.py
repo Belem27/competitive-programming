@@ -10,9 +10,8 @@ class Solution(object):
         :rtype: ListNode
         """
         curr = head
-        while curr and curr.next:
-            if curr.val == curr.next.val:
+        while curr:
+            while curr.next and curr.val == curr.next.val:
                 curr.next = curr.next.next
-            else:
-                curr = curr.next
+            curr = curr.next
         return head
