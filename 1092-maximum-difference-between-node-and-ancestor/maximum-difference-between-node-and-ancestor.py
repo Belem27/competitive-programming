@@ -13,11 +13,11 @@ class Solution(object):
         def maxAncestorDiffHelper(node, mx, mn): 
             if not node:
                 return 0
-            result = max(mx-node.val, node.val-mn)
+            res = max(mx-node.val, node.val-mn)
             mx = max(mx, node.val)
             mn = min(mn, node.val)
-            result = max(result, maxAncestorDiffHelper(node.left, mx, mn))
-            result = max(result, maxAncestorDiffHelper(node.right, mx, mn))
-            return result
+            res = max(res, maxAncestorDiffHelper(node.left, mx, mn))
+            res = max(res, maxAncestorDiffHelper(node.right, mx, mn))
+            return res
 
         return maxAncestorDiffHelper(root, 0, float("inf"))
