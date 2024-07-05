@@ -10,19 +10,25 @@ class Solution(object):
         :type traversal: str
         :rtype: TreeNode
         """
-        def recoverFromPreorderHelper(traversal, level, i):
-            j = i[0]
-            while j < len(traversal) and traversal[j] == '-':
-                j += 1 
-            if level != j - i[0]:
-                return None
-            i[0] = j
-            while j < len(traversal) and traversal[j] != '-':
-                j += 1
-            node = TreeNode(int(traversal[i[0]:j]))
-            i[0] = j
-            node.left = recoverFromPreorderHelper(traversal, level+1, i)
-            node.right = recoverFromPreorderHelper(traversal, level+1, i)
-            return node
-
-        return recoverFromPreorderHelper(traversal, 0, [0])
+        S = traversal
+        i = 0
+        stack = []
+        while i < len(S):
+            level = 0
+            while i < len(S) and S[i] == '-':
+                level += 1
+                i += 1
+            while len(stack) > level:
+                stack.pop()
+            val = []
+            while i < len(S) and S[i] != '-':
+                val.append(S[i])
+                i += 1
+            node = TreeNode(int("".join(val)))
+            if stack:
+                if stack[-1].left is None:
+                    stack[-1].left = node
+                else:
+                    stack[-1].right = node
+            stack.append(node)
+        return stack[0]
