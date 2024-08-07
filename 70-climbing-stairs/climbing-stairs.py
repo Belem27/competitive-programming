@@ -4,10 +4,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        memo={}
-        def dfs(i):
-            if i >= n: return 1 if i == n else 0
-            if i not in memo:
-                memo[i] = dfs(i + 1) + dfs(i + 2)
-            return memo[i]
-        return dfs(0)
+        one_step, two_step = 1,1
+
+        for i in range(n-1):
+            temp = one_step
+            one_step = one_step + two_step
+            two_step = temp
+        return one_step
