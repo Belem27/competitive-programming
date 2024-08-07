@@ -4,7 +4,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        for i in range(2,len(nums)):
-            nums[i] = max(nums[:i-1]) + nums[i]
-        print(nums)
-        return max(nums)
+        rob1, rob2 = 0,0
+        for n in nums:
+            temp = max(n+rob1, rob2)
+            rob1 = rob2
+            rob2 = temp
+        return rob2
